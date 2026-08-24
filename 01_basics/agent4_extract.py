@@ -16,8 +16,10 @@ llm = ChatSarvam(model="sarvam-105b")
 
 agent = create_agent(model=llm)
 
-query = "What's the capital of the Moon?"
-print("What's the capital of the Moon?")
+# query = "Extract enties and designate them from below : Krishna Pyde paid money to Arup Saha in India and Srilanka?"
+# query = "Extract enties and designate them from below : Krishna Pyde paid money near Bank?"
+query = "Translate to hindi : I am going to Kolkata."
+print(query)
 print("Thinking......................")
 
 response = agent.invoke(
@@ -26,7 +28,7 @@ response = agent.invoke(
 
 
 
-pprint(response)
+# pprint(response)
 
 print(response['messages'][-1].content)
 
