@@ -18,6 +18,9 @@ llm = ChatOllama(
     temperature=0.7
 )
 
+# Use below for OpenAI
+# from langchain_openai import ChatOpenAI
+# llm = ChatOpenAI(model="gpt-5-mini")
 
 
 @tool("square_root", description="Calculate the square root of a number")
