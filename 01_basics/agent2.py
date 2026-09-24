@@ -15,9 +15,11 @@ agent = create_agent(model=llm)
 
 
 response = agent.invoke(
-    {"messages": [HumanMessage(content="What's the capital of the Moon?"),
-    AIMessage(content="The capital of the Moon is Luna City."),
-    HumanMessage(content="Interesting, tell me more about Luna City")]}
+    {"messages": [HumanMessage(content="What's the capital of the France?"),
+    AIMessage(content="The capital of the France is Paris."),
+    HumanMessage(content="Tell me the population of Paris.")]}
 )
 
 pprint(response)
+print(response['messages'][-1].content)
+
