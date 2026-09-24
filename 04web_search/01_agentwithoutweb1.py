@@ -25,3 +25,5 @@ question = HumanMessage(content="Who is the current mayor of San Francisco?")
 response = agent.invoke(
     {"messages": [question]}
 )
+
+print(response['messages'][-1].content)
