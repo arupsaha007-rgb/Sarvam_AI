@@ -30,7 +30,7 @@ messages = [
 ] # fill this in
 
 # Step 3: Call OpenAI
-response = openai.chat.completions.create(model="gpt-4.1-nano", messages=messages)
+response = openai.chat.completions.create(model="gpt-5-nano", messages=messages)
 print(response.choices[0].message.content)
 
 # Step 4: print the result
