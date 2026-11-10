@@ -74,3 +74,4 @@ print(np.dot(vector1, vector2), np.dot(vector1, vector3), np.dot(vector2, vector
 print("-------------------------------------------------------------------------------")
 print(np.linalg.norm(vector1), np.linalg.norm(vector2), np.linalg.norm(vector3))
 print("-------------------------------------------------------------------------------")
+

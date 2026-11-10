@@ -35,7 +35,21 @@ print(vectorstore_from_directory.get(ids = "0939cba0-1a89-4f5d-aca8-9cb395be4e8a
 #                                     'Lecture Title': 'Analysis vs Analytics'})
 # print(vectorstore_from_directory.add_documents([added_document]))
 # 3a0e3c5c-5125-4caf-9776-a98200b99174
-
+print("-------------------------------------------------------------------------------")
+print("-------------------------------------------------------------------------------")
 print(vectorstore_from_directory.get("3a0e3c5c-5125-4caf-9776-a98200b99174"))
+print("-------------------------------------------------------------------------------")
+print("-------------------------------------------------------------------------------")
 
+updated_document = Document(page_content='Great! We hope we gave you a good idea about the level of applicability of the most frequently used programming and software tools in the field of data science. Thank you for watching!', 
+                            metadata={'Course Title': 'Introduction to Data and Data Science', 
+                                     'Lecture Title': 'Programming Languages & Software Employed in Data Science - All the Tools You Need'})
 
+vectorstore_from_directory.update_document(document_id = "3a0e3c5c-5125-4caf-9776-a98200b99174", 
+                                           document = updated_document)
+
+print("-------------------------------------------------------------------------------")
+print("-------------------------------------------------------------------------------")
+print(vectorstore_from_directory.get("3a0e3c5c-5125-4caf-9776-a98200b99174"))
+print("-------------------------------------------------------------------------------")
+print("-------------------------------------------------------------------------------")
