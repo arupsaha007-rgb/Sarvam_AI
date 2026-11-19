@@ -62,7 +62,7 @@ def port(client, model, python):
     reasoning_effort = "high" if 'gpt' in model else None
     response = client.chat.completions.create(model=model, messages=messages_for(python), reasoning_effort=reasoning_effort)
     reply = response.choices[0].message.content
-    # reply = reply.replace('```cpp','').replace('```','')
+    reply = reply.replace('```java','').replace('```','')
     write_output(reply,model)
 
 pi = """
@@ -89,10 +89,10 @@ def run_python(code):
     globals = {"__builtins__": __builtins__}
     exec(code, globals)
 
-# print(run_python(pi))
+print(run_python(pi))
 
-# port(openai, OPENAI_MODEL, pi)
-# print(f"OPENAI used model::{OPENAI_MODEL}")
+port(openai, OPENAI_MODEL, pi)
+print(f"OPENAI used model::{OPENAI_MODEL}")
 port(sarvam, SARVAM_MODEL, pi)
 print(f"SARVAM used model::{SARVAM_MODEL}")
 
