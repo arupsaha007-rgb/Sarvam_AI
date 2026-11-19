@@ -95,3 +95,9 @@ def run_python(code):
 # print(f"OPENAI used model::{OPENAI_MODEL}")
 port(sarvam, SARVAM_MODEL, pi)
 print(f"SARVAM used model::{SARVAM_MODEL}")
+
+# Few java files will be created like maingpt-5-nano.java in above folder
+# Record the execution time for python code like "Execution Time: "
+# Copy the created Java code to https://onecompiler.com/java or any online compiler
+# Record the time for execution.
+# Compare the time between models and decide which is the better model.
