@@ -8,8 +8,17 @@ from pprint import pprint
 
 # load_dotenv(Path(__file__).resolve().parents[1] / ".env")
 load_dotenv()
-llm = ChatSarvam(model="sarvam-105b" # Kwargs passed to the model:
-    ,temperature=1.0, max_tokens = 60)
+# llm = ChatSarvam(model="sarvam-105b" # Kwargs passed to the model:
+#     ,temperature=1.0, max_tokens = 60)
+
+from langchain_ollama import ChatOllama
+
+# 1. Initialize the local Ollama chat model
+# By default, it connects to http://localhost:11434
+llm = ChatOllama(
+    model="qwen3:1.7b",
+    temperature=0.7
+)
 
 agent = create_agent(model=llm)
 
@@ -17,9 +26,10 @@ agent = create_agent(model=llm)
 response = agent.invoke(
     {"messages": [HumanMessage(content="What's the capital of the France?"),
     AIMessage(content="The capital of the France is Paris."),
-    HumanMessage(content="Tell me the population of Paris.")]}
+    HumanMessage(content="Tell me the population of above city.")]}
 )
 
 pprint(response)
+print("-------------------------------------------------------------------------------")
 print(response['messages'][-1].content)
 

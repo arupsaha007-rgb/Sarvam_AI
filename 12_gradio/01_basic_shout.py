@@ -7,9 +7,6 @@ import gradio as gr
 load_dotenv(override=True)
 
 openai = OpenAI()
-
-
-
 # here's a simple function
 
 def shout(text):

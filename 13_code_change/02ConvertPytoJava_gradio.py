@@ -7,6 +7,8 @@ load_dotenv(override=True)
 openai_api_key = os.getenv('OPENAI_API_KEY')
 sarvam_api_key = os.getenv('SARVAM_API_KEY')
 
+
+
 if openai_api_key:
     print("OpenAI API Key is set")
 else:
@@ -21,14 +23,20 @@ openai = OpenAI()
 sarvam_url ="https://api.sarvam.ai/v2"
 sarvam = OpenAI(api_key=sarvam_api_key, base_url=sarvam_url)
 
+ollama_url = "http://localhost:11434/v1"
+ollama = OpenAI(api_key="ollama", base_url=ollama_url)
+# llama3.2:latest
+
 
 
 
 OPENAI_MODEL = "gpt-5-nano"
 SARVAM_MODEL = "sarvam-105b"
+LLAMA_MODEL = "llama3.2:latest"
+QWEN_MODEL = "qwen3:1.7b"
 
-models = [OPENAI_MODEL,SARVAM_MODEL]
-clients = {OPENAI_MODEL : openai, SARVAM_MODEL : sarvam}
+models = [OPENAI_MODEL,SARVAM_MODEL, LLAMA_MODEL, QWEN_MODEL]
+clients = {OPENAI_MODEL : openai, SARVAM_MODEL : sarvam, LLAMA_MODEL : ollama, QWEN_MODEL : ollama}
 
 # Write the system prompt
 system_prompt = """

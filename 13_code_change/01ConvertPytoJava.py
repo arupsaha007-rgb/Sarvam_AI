@@ -59,10 +59,12 @@ def write_output(java,model):
         f.write(java)
 
 def port(client, model, python):
+    
     reasoning_effort = "high" if 'gpt' in model else None
     response = client.chat.completions.create(model=model, messages=messages_for(python), reasoning_effort=reasoning_effort)
     reply = response.choices[0].message.content
     reply = reply.replace('```java','').replace('```','')
+
     write_output(reply,model)
 
 pi = """

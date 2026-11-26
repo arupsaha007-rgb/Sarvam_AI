@@ -29,15 +29,15 @@ def message_gpt(prompt):
 
 # And now - changing the function from "shout" to "message_gpt"
 
-message_input = gr.Textbox(label="Your message:", info="Enter a message for GPT-5-nano", lines=7)
+message_input = gr.Textbox(label="Your message:", info="Enter a message for AI", lines=7)
 message_output = gr.Textbox(label="Response:", lines=8)
 
 view = gr.Interface(
     fn=message_gpt,
-    title="GPT", 
+    title="AI", 
     inputs=[message_input], 
     outputs=[message_output], 
-    examples=["hello", "howdy"], 
+    examples=["Write a python program to add 2 numbers", "What is the capital of France?"], 
     flagging_mode="never"
     )
 view.launch()

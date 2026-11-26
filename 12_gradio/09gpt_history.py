@@ -15,7 +15,9 @@ system_message = "You are a helpful assistant"
 
 def chat(message, history):
     history = [{"role":h["role"], "content":h["content"]} for h in history]
+    print(f"History:{history}")
     messages = [{"role": "system", "content": system_message}] + history + [{"role": "user", "content": message}]
+    print(f"Messages:{messages}")
     response = openai.chat.completions.create(model=MODEL, messages=messages)
     return response.choices[0].message.content
 

@@ -1,3 +1,4 @@
+# Example: Retrieve and update records in a persisted Chroma collection.
 # pip install -U langchain-chroma langchain
 
 
@@ -13,12 +14,16 @@ from langchain_core.documents import Document
 
 from pathlib import Path
 
+# Load API credentials from .env, replacing matching environment variables.
 load_dotenv(override=True)
 
 # Open AI Embedding model
+# Use the embedding model that was used when the collection was created.
 embedding = OpenAIEmbeddings(model = "text-embedding-3-small")
 
 # Load the Vector Store
+# Open the collection saved by 06chromavectorstore.py.
+# The path is relative to the working directory.
 vectorstore_from_directory = Chroma(persist_directory = "./intro-to-ds-lectures", 
                                     embedding_function = embedding)
 
@@ -26,6 +31,8 @@ vectorstore_from_directory = Chroma(persist_directory = "./intro-to-ds-lectures"
 # print(vectorstore_from_directory.get())
 # 0939cba0-1a89-4f5d-aca8-9cb395be4e8a
 
+# Fetch a stored embedding by ID without performing a similarity search.
+# The example IDs below must correspond to records in your local collection.
 print(vectorstore_from_directory.get(ids = "0939cba0-1a89-4f5d-aca8-9cb395be4e8a", 
                                include = ["embeddings"]))
 
@@ -41,15 +48,18 @@ print(vectorstore_from_directory.get("3a0e3c5c-5125-4caf-9776-a98200b99174"))
 print("-------------------------------------------------------------------------------")
 print("-------------------------------------------------------------------------------")
 
+# Build replacement text and metadata for the existing record.
 updated_document = Document(page_content='Great! We hope we gave you a good idea about the level of applicability of the most frequently used programming and software tools in the field of data science. Thank you for watching!', 
                             metadata={'Course Title': 'Introduction to Data and Data Science', 
                                      'Lecture Title': 'Programming Languages & Software Employed in Data Science - All the Tools You Need'})
 
+# Re-embed the replacement text through OpenAI and update the persisted record.
 vectorstore_from_directory.update_document(document_id = "3a0e3c5c-5125-4caf-9776-a98200b99174", 
                                            document = updated_document)
 
 print("-------------------------------------------------------------------------------")
 print("-------------------------------------------------------------------------------")
+# Read the same record again to inspect the saved changes.
 print(vectorstore_from_directory.get("3a0e3c5c-5125-4caf-9776-a98200b99174"))
 print("-------------------------------------------------------------------------------")
 print("-------------------------------------------------------------------------------")
