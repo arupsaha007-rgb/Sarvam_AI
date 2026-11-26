@@ -61,3 +61,14 @@ print('-----------------------------------------------------------------')
 # pprint(response)
 
 print(response['messages'][-1].content)
+print('-----------------------------------------------------------------')
+print("Ask again with separate thread id!!!!!!!!!!!")
+config = {"configurable": {"thread_id": "2"}}
+question = HumanMessage(content="What's my name?")
+
+response = agent.invoke(
+    {"messages": [question]},
+    config,  
+)
+print(response['messages'][-1].content)
+print('-----------------------------------------------------------------')

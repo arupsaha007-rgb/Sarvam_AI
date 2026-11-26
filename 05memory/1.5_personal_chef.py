@@ -7,6 +7,7 @@ from typing import Dict, Any
 from tavily import TavilyClient
 from langchain_ollama import ChatOllama
 from langgraph.checkpoint.memory import InMemorySaver
+from langchain_sarvam import ChatSarvam
 
 tavily_client = TavilyClient()
 
@@ -29,10 +30,12 @@ Return recipe suggestions and eventually the recipe instructions to the user, if
 
 from langchain.agents import create_agent
 
-llm = ChatOllama(
-    model="qwen3:1.7b",
-    temperature=0.7
-)
+# llm = ChatOllama(
+#     model="qwen3:1.7b",
+#     temperature=0.7
+# )
+load_dotenv()
+llm = ChatSarvam(model="sarvam-105b")
 
 agent = create_agent(
     model=llm,
@@ -54,6 +57,14 @@ pprint(response)
 print(response['messages'][-1].content)
 
 print("--------------------------------------------------------------------------------------------------------")
-from pprint import pprint
+# from pprint import pprint
 
+# pprint(response)
+
+response = agent.invoke(
+    {"messages": [HumanMessage(content="Suggest mexican dish")]},
+    config
+)
 pprint(response)
+print(response['messages'][-1].content)
+
