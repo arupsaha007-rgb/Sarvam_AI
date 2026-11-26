@@ -52,3 +52,4 @@ print("-------------------------------------------------------------------------
 chain_long = (chat_template_tools | llm | string_parser | {'tools':RunnablePassthrough()} | 
               chat_template_strategy | llm | string_parser)
 print(chain_long.invoke({'job title':'Project Manager'}))
+print("----------------------------------------------------------------------------------")

@@ -17,11 +17,11 @@ from langchain_core.runnables import RunnableParallel
 
 # 1. Initialize the local Ollama chat model
 # By default, it connects to http://localhost:11434
-llm = ChatOpenAI(model_name = 'gpt-4', 
-                  model_kwargs = {'seed':365},
-                  temperature = 0,
-                  max_tokens = 100)
-
+# llm = ChatOpenAI(model_name = 'gpt-4', 
+#                   model_kwargs = {'seed':365},
+#                   temperature = 0,
+#                   max_tokens = 100)
+llm = ChatOpenAI(model_name = 'gpt-5-nano')
 # Adding chat templates
 chat_template_books = ChatPromptTemplate.from_template(
     '''

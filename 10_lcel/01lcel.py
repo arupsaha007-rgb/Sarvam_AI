@@ -20,24 +20,33 @@ llm = ChatOllama(
 list_instructions = CommaSeparatedListOutputParser().get_format_instructions()
 chat_template = ChatPromptTemplate.from_messages([
     ('human', 
-     "I've recently adopted a {pet}. Could you suggest three {pet} names? \n" + list_instructions)])
+     "I've recently adopted a {pet}. Could you suggest three funny and related to sports {pet} names? \n" + list_instructions)])
 print(f" chat_template ::{chat_template.messages[0].prompt.template}" )
 
 list_output_parser = CommaSeparatedListOutputParser()
 
+
+# Traditional way
 chat_template_result = chat_template.invoke({'pet':'dog'})
 
 chat_result = llm.invoke(chat_template_result)
 
 response_parsed = list_output_parser.invoke(chat_result)
 print("---------------------------------------------------------")
+print("Non chain way : dog")
 print(chat_result.content)
 print(response_parsed)
-
+print("---------------------------------------------------------")
 # This creates a chain 
 chain = chat_template | llm | list_output_parser
 
 response = chain.invoke({'pet':'dog'})
 print("---------------------------------------------------------")
+print("dog")
 print(response)
 
+response = chain.invoke({'pet':'cat'})
+print("---------------------------------------------------------")
+print("cat")
+print(response)
+print("---------------------------------------------------------")
